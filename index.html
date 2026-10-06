@@ -30,6 +30,8 @@
       box-shadow: 0 4px 15px rgba(34, 158, 217, 0.4);
       display: inline-block;
       margin-top: 20px;
+      border: none;
+      cursor: pointer;
     }
     p {
       color: #94a3b8;
@@ -40,7 +42,19 @@
 </head>
 <body>
   <h2>Özel Kanala Katılmak İçin Dokun 👇</h2>
-  <a href="intent://resolve?domain=nisakavlak#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=https%3A%2F%2Ft.me%2Fnisakavlak;end" class="btn">Telegram'da Aç 🚀</a>
-  <p>Otomatik açılmazsa butona basılı tutup bağlantıyı aç deyin.</p>
+  <button onclick="openTelegram()" class="btn">Telegram'da Aç 🚀</button>
+  <p>Açılmazsa sağ üstteki üç noktadan (⋮) "Tarayıcıda Aç" seçeneğine dokunun.</p>
+
+  <script>
+    function openTelegram() {
+      // 1. Doğrudan uygulamaya fırlatmayı dene
+      window.location.href = "tg://resolve?domain=nisakavlak";
+      
+      // 2. TikTok bloklarsa 0.5 saniye sonra güvenli web bağlantısına devret
+      setTimeout(function() {
+        window.location.href = "https://t.me/nisakavlak";
+      }, 500);
+    }
+  </script>
 </body>
 </html>
